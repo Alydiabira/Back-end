@@ -38,7 +38,7 @@ const User = require('./models/User');
 const Blog = require('./models/Blog');
 
 
-const url = process.env.DATABASE_URL
+const url = 'mongodb+srv://Aly:aly@cluster0.bslayzc.mongodb.net/?retryWrites=true&w=majority'
 
 mongoose.connect(url, {
     useNewUrlParser: true,
@@ -393,13 +393,7 @@ app.post('/api/signup', function(req, res) {
 app.get('/inscription', function(req, res) {
     res.render('Signup')
 });
-app.get('/:id', function(req, res) {
-    User.findOne({_id: req.params.id})
-    .then((data) => {
-        res.json(data);
-    })
-    .catch(err => console.log(err));
-});
+
 
 app.get('/login', function(req, res) {
     res.render('Login');
@@ -433,6 +427,6 @@ app.post('/api/login', function(req, res) {
 });
 
 
-server.listen(5000, function () {
-    console.log("Server listening on port 5000");
+server.listen(5001, function () {
+    console.log("Server listening on port 5001");
 });
